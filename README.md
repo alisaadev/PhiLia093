@@ -55,7 +55,7 @@ OWNER_IDS = [123456789]
 
 ### 5️⃣ Jalankan Bot
 ```bash
-python main.py
+python -m system
 ```
 
 ---
@@ -63,14 +63,14 @@ python main.py
 ## 🧪 Debug & Maintenance
 Eval (Owner Only)
 ```
-.eval return m.to_dict()
-.eval return m.body
+/eval return m.to_dict()
+/eval return vars(m)
 ```
 
 Exec (Owner Only)
 ```
-.exec ls
-.exec uptime
+/exec ls
+/exec uptime
 ```
 
 > ⚠️ Gunakan fitur ini dengan bijak dan hanya untuk owner.
@@ -84,9 +84,7 @@ Exec (Owner Only)
 
 ---
 
-## ⚠️ PERINGATAN LISENSI & ETIKA
-
-### 🚫 SCRIPT INI TIDAK UNTUK DIJUAL
+## 🚫 SCRIPT INI TIDAK UNTUK DIJUAL
 
 Dilarang menjual ulang script ini dalam bentuk apa pun
 Dilarang mengklaim sebagai karya pribadi tanpa kredit
@@ -109,3 +107,4 @@ Jika kamu paham struktur ini, kamu bisa:
 - port plugin WhatsApp > Telegram dengan mudah
 - membuat bot Telegram yang scalable & maintainable
 
+---

@@ -1,4 +1,3 @@
-# plugins/owner.py
 import asyncio
 import subprocess
 import textwrap
@@ -18,7 +17,7 @@ async def run_eval(m):
         "m": m,
         "ctx": m.ctx,
         "bot": m.ctx.bot,
-        "__builtins__": __builtins__,  # penting
+        "__builtins__": __builtins__,
     }
 
     try:
