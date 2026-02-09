@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor config
+.vscode/
+.idea/
+
+# Telegram session / runtime
+*.session
+
+# Database
+storage/data.db

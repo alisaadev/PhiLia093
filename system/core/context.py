@@ -1,6 +1,6 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from storage.config import PREFIX
+from storage.database import get_str
 
 
 class MessageContext:
@@ -13,7 +13,7 @@ class MessageContext:
 
         # BASIC
         self.body = self.message.text or ""
-        self.prefix = PREFIX
+        self.prefix = get_str("prefix")
         self.command = ""
         self.args = []
         self.text = ""

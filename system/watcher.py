@@ -12,5 +12,5 @@ class PluginWatcher(FileSystemEventHandler):
 
 def start_watcher(path="plugins"):
     observer = Observer()
-    observer.schedule(PluginWatcher(), path, recursive=False)
+    observer.schedule(PluginWatcher(), path, recursive=True)
     observer.start()

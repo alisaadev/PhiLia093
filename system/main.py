@@ -1,4 +1,5 @@
 from telegram.ext import (
+    CallbackQueryHandler,
     ApplicationBuilder,
     MessageHandler,
     ContextTypes,
@@ -6,9 +7,11 @@ from telegram.ext import (
 )
 from system.core.serialize import Serialize
 from system.core.handler import handler
+from system.core.callback import callback_router
 from system.watcher import start_watcher
 from system.loader import load_plugins
 from storage.config import BOT_TOKEN, OWNER_IDS
+from storage.database import init_datas
 
 
 async def on_message(update, ctx: ContextTypes.DEFAULT_TYPE):
@@ -23,12 +26,12 @@ def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.bot_data["owners"] = OWNER_IDS
 
+    init_datas()
     load_plugins()
     start_watcher()
 
-    app.add_handler(
-        MessageHandler(filters.ALL, on_message)
-    )
+    app.add_handler(MessageHandler(filters.ALL, on_message))
+    app.add_handler(CallbackQueryHandler(callback_router))
 
     print("🤖 Telegram bot running...")
     app.run_polling()

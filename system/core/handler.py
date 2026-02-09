@@ -1,5 +1,6 @@
-from storage.config import SETTINGS, MESSAGES
+from storage.config import MESSAGES
 from system.loader import PLUGINS
+from storage.database import get_bool
 
 
 async def handler(m):
@@ -7,7 +8,7 @@ async def handler(m):
         return
 
     # === GLOBAL FILTER ===
-    if not SETTINGS["public"] and not m.isOwner:
+    if not get_bool("public") and not m.isOwner:
         return
 
     for name, plugin in PLUGINS.items():

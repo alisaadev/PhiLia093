@@ -1,9 +1,10 @@
-async def run(m):
+async def run_start(m):
     await m.reply("Masih Maintenance ❗")
 
 
 plugin = {
     "command": ["start"],
     "tags": "main",
-    "run": run
+
+    "run": run_start
 }

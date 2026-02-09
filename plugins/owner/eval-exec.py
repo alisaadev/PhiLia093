@@ -8,9 +8,6 @@ async def run_eval(m):
     if not m.text:
         return await m.reply("Masukkan kode Python")
 
-    import textwrap
-    import traceback
-
     code = textwrap.dedent(m.text)
 
     env = {
@@ -56,6 +53,7 @@ async def run_exec(m):
 
 plugin = {
     "command": ["eval", "exec"],
+    "tags": "owner",
     "owner": True,
 
     "run": lambda m: run_eval(m) if m.command == "eval" else run_exec(m)
