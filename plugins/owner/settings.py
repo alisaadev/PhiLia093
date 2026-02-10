@@ -29,7 +29,7 @@ async def on_public(query, m):
     
 
 plugin = {
-    "command": ["option"],
+    "command": ["setting", "settings"],
     "owner": True,
 
     "run": run_option,

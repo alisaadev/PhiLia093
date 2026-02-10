@@ -18,10 +18,16 @@ class MessageContext:
         self.args = []
         self.text = ""
 
+        # BOT INFO
+        self.bot_id = None
+        self.bot_username = None
+        self.bot_name = None
+
         # FLAGS
-        self.isGroup = self.chat.type in ("group", "supergroup")
-        self.isPrivate = self.chat.type == "private"
-        self.isOwner = self.user.id == ctx.bot_data.get("owners")
+        self.is_admin = False
+        self.is_group = self.chat.type in ("group", "supergroup")
+        self.is_private = self.chat.type == "private"
+        self.is_owner = self.user.id == ctx.bot_data.get("owners")
 
         # PARSE COMMAND
         self._parse_command()
@@ -49,6 +55,30 @@ class MessageContext:
             "sender": q.from_user.id if q.from_user else None,
             "isMedia": bool(q.photo or q.video or q.document)
         }
+
+    async def load_admin(self):
+        if not self.is_group:
+            self.is_admin = False
+            return
+
+        try:
+            member = await self.context.bot.get_chat_member(
+                self.chat.id,
+                self.from_user.id
+            )
+            self.is_admin = member.status in ("administrator", "creator")
+        except Exception:
+            self.is_admin = False
+
+    async def load_bot(self):
+        if self.bot_id is not None:
+            return
+
+        me = await self.context.bot.get_me()
+
+        self.bot_id = me.id
+        self.bot_username = me.username
+        self.bot_name = me.first_name
 
     def to_dict(self):
         return {

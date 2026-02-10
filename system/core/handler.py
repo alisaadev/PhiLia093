@@ -7,8 +7,11 @@ async def handler(m):
     if not m.body:
         return
 
+    await m.load_bot()
+    await m.load_admin()
+
     # === GLOBAL FILTER ===
-    if not get_bool("public") and not m.isOwner:
+    if not get_bool("public") and not m.is_owner:
         return
 
     for name, plugin in PLUGINS.items():
@@ -38,15 +41,15 @@ async def handler(m):
             continue
 
         # === PERMISSION CHECK ===
-        if plugin.get("owner") and not m.isOwner:
+        if plugin.get("owner") and not m.is_owner:
             await m.reply(MESSAGES["owner"])
             continue
 
-        if plugin.get("group") and not m.isGroup:
+        if plugin.get("group") and not m.is_group:
             await m.reply(MESSAGES["group"])
             continue
 
-        if plugin.get("private") and m.isGroup:
+        if plugin.get("private") and m.is_group:
             await m.reply(MESSAGES["private"])
             continue
 
