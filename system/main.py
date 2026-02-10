@@ -10,8 +10,10 @@ from system.core.handler import handler
 from system.core.callback import callback_router
 from system.watcher import start_watcher
 from system.loader import load_plugins
-from storage.config import BOT_TOKEN, OWNER_IDS
+from system.bootstrap import bootstrap
 from storage.database import init_datas
+
+BOT_TOKEN, OWNER_IDS = bootstrap()
 
 
 async def on_message(update, ctx: ContextTypes.DEFAULT_TYPE):

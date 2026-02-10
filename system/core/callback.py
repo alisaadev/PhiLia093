@@ -1,5 +1,6 @@
 from system.loader import PLUGINS
 
+
 async def callback_router(update, ctx):
     query = update.callback_query
     await query.answer()

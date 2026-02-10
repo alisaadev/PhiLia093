@@ -21,7 +21,7 @@ class MessageContext:
         # FLAGS
         self.isGroup = self.chat.type in ("group", "supergroup")
         self.isPrivate = self.chat.type == "private"
-        self.isOwner = self.user.id in ctx.bot_data.get("owners", [])
+        self.isOwner = self.user.id == ctx.bot_data.get("owners")
 
         # PARSE COMMAND
         self._parse_command()

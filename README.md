@@ -45,15 +45,7 @@ Minimal dependency:
 - python-telegram-bot
 - watchdog
 
-### 4️⃣ Konfigurasi Bot
-Edit **config.py**:
-
-```python
-BOT_TOKEN = "TOKEN_BOT_TELEGRAM"
-OWNER_IDS = [123456789]
-```
-
-### 5️⃣ Jalankan Bot
+### 4️⃣ Jalankan Bot
 ```bash
 python -m system
 ```
