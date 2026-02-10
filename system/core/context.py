@@ -62,7 +62,7 @@ class MessageContext:
             return
 
         try:
-            member = await self.context.bot.get_chat_member(
+            member = await self.ctx.bot.get_chat_member(
                 self.chat.id,
                 self.from_user.id
             )
@@ -74,7 +74,7 @@ class MessageContext:
         if self.bot_id is not None:
             return
 
-        me = await self.context.bot.get_me()
+        me = await self.ctx.bot.get_me()
 
         self.bot_id = me.id
         self.bot_username = me.username

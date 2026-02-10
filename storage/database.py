@@ -8,7 +8,7 @@ conn = sqlite3.connect(DB_PATH, check_same_thread=False)
 cursor = conn.cursor()
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS settings (
+CREATE TABLE IF NOT EXISTS data (
     key TEXT PRIMARY KEY,
     value TEXT
 )
@@ -22,7 +22,7 @@ def set_data(key: str, value):
     Value akan disimpan sebagai STRING.
     """
     cursor.execute(
-        "REPLACE INTO settings (key, value) VALUES (?, ?)",
+        "REPLACE INTO data (key, value) VALUES (?, ?)",
         (key, str(value))
     )
     conn.commit()
@@ -35,7 +35,7 @@ def get_data(key: str, default=None):
     - dikembalikan
     - SEKALIGUS disimpan ke DB
     """
-    cursor.execute("SELECT value FROM settings WHERE key=?", (key,))
+    cursor.execute("SELECT value FROM data WHERE key=?", (key,))
     row = cursor.fetchone()
 
     if row:
