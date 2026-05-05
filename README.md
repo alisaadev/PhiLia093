@@ -7,7 +7,7 @@ Tujuan utama project ini:
 - membuat codebase lebih **bersih, modular, dan mudah di-maintain**
 - memudahkan pengembangan lintas platform (WA → Telegram)
 
-> ⚠️ Project ini **masih dalam tahap pengembangan aktif**.
+> ⚠️ Project ini **sementara ditinggalkan karna fokus ke project lain**.
 
 ---
 
